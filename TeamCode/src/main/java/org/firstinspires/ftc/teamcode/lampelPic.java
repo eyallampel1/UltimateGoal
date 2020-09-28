@@ -88,15 +88,19 @@ public class lampelPic extends LinearOpMode {
     private float phoneYRotate    = 0;
     private float phoneZRotate    = 0;
 
-    @Override public void runOpMode() {
+    @Override public void runOpMode() throws InterruptedException {
         /*
          * Retrieve the camera we are to use.
          */
         webcamName = hardwareMap.get(WebcamName.class, "Webcam 1");
 
         //ELIOR YOU CAN SWITCH HER
+
+
+        startVuforia();
+        waitFor(10);
         startopenCV();
-        //startVuforia();
+
 
     }
 
@@ -443,6 +447,10 @@ public class lampelPic extends LinearOpMode {
 
         // Disable Tracking when we are done;
         targetsUltimateGoal.deactivate();
+    }
+
+    public void waitFor(int time) throws InterruptedException {
+        Thread.sleep(time * 1000);
     }
 }
 
